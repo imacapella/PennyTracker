@@ -10,10 +10,8 @@ import SwiftUI
 struct SplashScreen: View {
     var namespace : Namespace.ID
     @Binding var showLogin: Bool
-    @State var isActive : Bool = false
     @State var animate : Bool = false
     
-    // Customise your SplashScreen here
     var body: some View {
         ZStack {
                     LinearGradient(
@@ -25,15 +23,11 @@ struct SplashScreen: View {
                     
                     VStack {
                         Spacer()
-                        Image("pennyLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .shadow(radius: 10)
+                        PennyTrackerLogo(widthMultiplier: 1)
                             .scaleEffect(animate ? 1 : 0)
                             .animation(.easeInOut(duration: 1))
                             .matchedGeometryEffect(id: "title", in: namespace)
+                            .frame(maxHeight: 400)
                         
                         Text("Where Every Penny Counts")
                             .font(.title3)
@@ -57,5 +51,14 @@ struct SplashScreen: View {
                         })
                     }
                 }
+    }
+}
+
+struct SplashScreen_Previews: PreviewProvider {
+    @Namespace static var namespace
+    @State static var showLogin = false
+
+    static var previews: some View {
+        SplashScreen(namespace: namespace, showLogin: $showLogin)
     }
 }
