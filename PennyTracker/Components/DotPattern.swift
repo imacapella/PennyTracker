@@ -54,8 +54,14 @@ struct DotBackground : View {
     }
 }
 
+struct DotScreenBackground : View {
+    var body: some View {
+        DotPattern(dotColor: .pennyCream, backgroundColor: .clear, dotSize: 2, spacing: 5, opacity: 0.3)
+    }
+}
+
 struct DotComponentBackground : View {
     var body: some View {
-        DotPattern(dotColor: .gray, backgroundColor: .clear, dotSize: 2, spacing: 5, opacity: 1)
+        DotPattern(dotColor: .gray, backgroundColor: .clear, dotSize: 2, spacing: 5, opacity: 0.6)
     }
 }

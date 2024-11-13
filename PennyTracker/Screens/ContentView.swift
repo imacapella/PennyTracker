@@ -12,7 +12,6 @@ struct ContentView: View {
     @State private var showLogin = false
     @Namespace private var namespace
     
-    // Customise your SplashScreen here
     var body: some View {
         ZStack{
             if showLogin{

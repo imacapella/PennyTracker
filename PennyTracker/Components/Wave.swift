@@ -29,3 +29,4 @@ struct Wave: Shape {
         return path
     }
 }
+

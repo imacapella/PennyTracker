@@ -7,20 +7,18 @@
 import SwiftUI
 
 struct PennyTrackerLogo : View{
-    var widthMultiplier : Double
+    var scaleFactor: Double
     var body: some View{
-        GeometryReader{ geo in
-            VStack(alignment: .center) {
-                Image("pennyLogo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: geo.size.width * widthMultiplier)
-                    .shadow(radius: 10)
-            }
+        VStack(alignment: .center) {
+            Image("pennyLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: UIScreen.main.bounds.width * scaleFactor)
+                .shadow(radius: 10)
         }
     }
 }
 
 #Preview {
-    PennyTrackerLogo(widthMultiplier: 1)
+    PennyTrackerLogo(scaleFactor: 1)
 }
