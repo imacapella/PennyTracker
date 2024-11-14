@@ -22,23 +22,18 @@ struct SplashScreen: View {
                 PennyTrackerLogo(scaleFactor: 1)
                     .scaleEffect(animate ? 1 : 0)
                     .matchedGeometryEffect(id: "title", in: namespace)
+                    .animation(.easeInOut, value: 1)
                     .onAppear {
-                        animate.toggle()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            showLogin = true
+                        animate = true
+                        if Thread.isMainThread{
+                          DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                showLogin = true
+                            }
                         }
                     }
-
-                Text("Where Every Penny Counts")
-                    .font(.title3)
-                    .foregroundColor(.white)
-                    .padding(.top, 10)
-
+                TextDescription()
                 Spacer()
-                Text("All Rights Reserved")
-                    .font(.caption)
-                    .foregroundColor(.white.opacity(1))
-                    .padding(.bottom, 20)
+                TextAppRights()
             }
         }
         .edgesIgnoringSafeArea(.all)
@@ -53,5 +48,25 @@ struct SplashScreen_Previews: PreviewProvider {
 
     static var previews: some View {
         SplashScreen(namespace: namespace, showLogin: $showLogin)
+    }
+}
+
+
+struct TextDescription :  View {
+    var body: some View {
+        Text("Where Every Penny Counts")
+            .font(.title3)
+            .foregroundColor(.white)
+            .padding(.top, 10)
+    }
+}
+
+
+struct TextAppRights : View {
+    var body: some View{
+        Text("All Rights Reserved")
+            .font(.caption)
+            .foregroundColor(.white.opacity(1))
+            .padding(.bottom, 20)
     }
 }

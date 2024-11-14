@@ -19,7 +19,7 @@ struct ContentView: View {
             }else{
                 SplashScreen(namespace: namespace, showLogin: $showLogin)
             }
-        }.animation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0.5), value: showLogin)
+        }//.animation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0.5), value: showLogin)
     }
 }
  
