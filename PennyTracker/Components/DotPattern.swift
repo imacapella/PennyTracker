@@ -1,67 +1,41 @@
-//
-//  DotPattern.swift
-//  PennyTracker
-//
-//  Created by Gürkan Karadaş on 12.11.2024.
-//
-
 import SwiftUI
 
-public struct DotPattern: View {
-    public var dotColor: Color
-    public var backgroundColor: Color
-    public var dotSize: CGFloat
-    public var spacing: CGFloat
-    public var opacity: Double
-
-    public init(dotColor: Color = .black, backgroundColor: Color = .clear, dotSize: CGFloat = 4, spacing: CGFloat = 12, opacity: Double = 0.5) {
-        self.dotColor = dotColor
-        self.backgroundColor = backgroundColor
+struct DotBackground: View {
+    let columns: Int
+    let rows: Int
+    let dotSize: CGFloat
+    let dotSpacing: CGFloat
+    let dotColor: Color
+    
+    init(
+        columns: Int = 15,
+        rows: Int = 30,
+        dotSize: CGFloat = 4,
+        dotSpacing: CGFloat = 20,
+        dotColor: Color = Color.gray.opacity(0.3)
+    ) {
+        self.columns = columns
+        self.rows = rows
         self.dotSize = dotSize
-        self.spacing = spacing
-        self.opacity = opacity
+        self.dotSpacing = dotSpacing
+        self.dotColor = dotColor
     }
-
-    public var body: some View {
+    
+    var body: some View {
         GeometryReader { geometry in
-            let columns = Int(geometry.size.width / (dotSize + spacing)) + 2
-            let rows = Int(geometry.size.height / (dotSize + spacing)) + 2
-            
-            ZStack {
-                backgroundColor
-                ForEach(0..<rows, id: \.self) { row in
-                    ForEach(0..<columns, id: \.self) { column in
-                        Circle()
-                            .fill(dotColor)
-                            .frame(width: dotSize, height: dotSize)
-                            .opacity(opacity)
-                            .position(
-                                x: CGFloat(column) * (dotSize + spacing),
-                                y: CGFloat(row) * (dotSize + spacing)
-                            )
-                    }
+            ForEach(0..<rows, id: \.self) { row in
+                ForEach(0..<columns, id: \.self) { column in
+                    Circle()
+                        .fill(dotColor)
+                        .frame(width: dotSize, height: dotSize)
+                        .position(
+                            x: CGFloat(column) * dotSpacing + dotSpacing/2,
+                            y: CGFloat(row) * dotSpacing + dotSpacing/2
+                        )
                 }
             }
-            .clipped()
         }
+        .drawingGroup() // Performans optimizasyonu için
     }
 }
 
-
-struct DotBackground : View {
-    var body: some View {
-        DotPattern(dotColor: .gray, backgroundColor: Color(.pennyCream), dotSize: 2, spacing: 5, opacity: 1)
-    }
-}
-
-struct DotScreenBackground : View {
-    var body: some View {
-        DotPattern(dotColor: .pennyCream, backgroundColor: .clear, dotSize: 2, spacing: 5, opacity: 0.3)
-    }
-}
-
-struct DotComponentBackground : View {
-    var body: some View {
-        DotPattern(dotColor: .gray, backgroundColor: .clear, dotSize: 2, spacing: 5, opacity: 0.6)
-    }
-}

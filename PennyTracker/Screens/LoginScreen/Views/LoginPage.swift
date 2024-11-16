@@ -8,31 +8,25 @@
 import SwiftUI
 
 struct LoginPage: View {
+    var namespace : Namespace.ID
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
-    var namespace: Namespace.ID
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var showPassword: Bool = false
     var body: some View {
         ZStack{
-            DotBackground()
+            Color.pennyCream
             VStack() {
-                ZStack {
-                        Wave(waveHeight: 15, phase: Angle(degrees: Double(-3 * (screenHeight / 15))))
-                                .frame(width: screenWidth, height: screenHeight * 0.30)
-                                .rotationEffect(.degrees(180))
-                                .foregroundColor(Color(.pennyRed))
-                                .shadow(radius: 15)
-                                .overlay {
-                                    PennyTrackerLogo(scaleFactor: 0.7)
-                                        .padding(.top, 40)
-                                        .shadow(radius: 6)
-                                }
-                        }
+                WaveLogo()
+                    .overlay {
+                        PennyTrackerLogo(scaleFactor: 0.85)
+                            .padding(.top, 40)
+                            .shadow(radius: 6)
+                            .matchedGeometryEffect(id: "title", in: namespace)
+                    }
                 VStack(spacing: 20){
                     UsernameTextField(username: username)
-                    PasswordTextField(password: password, showPassword: showPassword)
+                    PasswordTextField(password: password)
                 }.padding(.top, 80)
                 VStack(spacing: 15) {
                     LoginButton()
@@ -49,33 +43,23 @@ struct LoginPage: View {
       @Namespace static var namespace
         
         static var previews: some View {
-           LoginPage(namespace: namespace)
+            LoginPage(namespace: namespace)
         }
     }
     
- 
-
-
 
 
 struct WaveLogo: View {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
-
+    
     var body: some View {
-        ZStack {
-            Wave(waveHeight: 15, phase: Angle(degrees: Double(-3 * (screenHeight / 15))))
-                .frame(width: screenWidth, height: screenHeight * 0.30)
-                .rotationEffect(.degrees(180))
-                .foregroundColor(Color(.red))
-                .shadow(radius: 15)
-                .overlay {
-                    PennyTrackerLogo(scaleFactor: 0.7)
-                        .padding(.top, 40)
-                        .shadow(radius: 6)
-                }
-        }
-        .edgesIgnoringSafeArea(.all)
+        Wave(waveHeight: 15, phase: Angle(degrees: Double(-3 * (screenHeight / 15))))
+            .frame(width: screenWidth + 10, height: screenHeight * 0.30)
+            .rotationEffect(.degrees(180))
+            .foregroundColor(Color(.pennyRed))
+            //.shadow(radius: 15)
+            
     }
 }
 

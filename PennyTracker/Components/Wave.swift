@@ -16,7 +16,7 @@ struct Wave: Shape {
         var path = Path()
         path.move(to: CGPoint(x: 0, y: rect.maxY)) // Bottom Left
         
-        for x in stride(from: 0, through: rect.width, by: 1) {
+        for x in stride(from: 0, through: rect.width, by: 5) {
             let relativeX: CGFloat = x / 50 //wavelength
             let sine = CGFloat(sin(relativeX + CGFloat(phase.radians)))
             let y = waveHeight * sine //+ rect.midY

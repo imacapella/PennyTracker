@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct SplashScreen: View {
-    var namespace: Namespace.ID
     @Binding var showLogin: Bool
     @State private var animate: Bool = false
-
+    var namespace : Namespace.ID
+    
     var body: some View {
         ZStack {
             Color.pennyRed
-            DotScreenBackground()
-
+            
             VStack {
                 Spacer()
                 PennyTrackerLogo(scaleFactor: 1)
                     .scaleEffect(animate ? 1 : 0)
+                    .animation(.spring(response: 0.6, dampingFraction: 0.7), value: animate)
                     .matchedGeometryEffect(id: "title", in: namespace)
-                    .animation(.easeInOut, value: 1)
                     .onAppear {
                         animate = true
-                        if Thread.isMainThread{
-                          DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation(.easeInOut(duration: 0.5)) {
                                 showLogin = true
                             }
                         }
@@ -34,20 +33,10 @@ struct SplashScreen: View {
                 TextDescription()
                 Spacer()
                 TextAppRights()
+                
             }
-        }
-        .edgesIgnoringSafeArea(.all)
-        .animation(.easeInOut(duration: 0.7), value: animate)
-    }
-}
-
-
-struct SplashScreen_Previews: PreviewProvider {
-    @Namespace static var namespace
-    @State static var showLogin = false
-
-    static var previews: some View {
-        SplashScreen(namespace: namespace, showLogin: $showLogin)
+            
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 
