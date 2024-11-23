@@ -6,7 +6,14 @@
 	objectVersion = 70;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		611F32F22CF277480035D55E /* ExpenseTracking+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611F32F02CF277480035D55E /* ExpenseTracking+CoreDataClass.swift */; };
+		611F32F32CF277480035D55E /* ExpenseTracking+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611F32F12CF277480035D55E /* ExpenseTracking+CoreDataProperties.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		611F32F02CF277480035D55E /* ExpenseTracking+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpenseTracking+CoreDataClass.swift"; sourceTree = "<group>"; };
+		611F32F12CF277480035D55E /* ExpenseTracking+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpenseTracking+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		619FC0772C90A21A008141A1 /* PennyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PennyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -28,6 +35,8 @@
 		619FC06E2C90A21A008141A1 = {
 			isa = PBXGroup;
 			children = (
+				611F32F02CF277480035D55E /* ExpenseTracking+CoreDataClass.swift */,
+				611F32F12CF277480035D55E /* ExpenseTracking+CoreDataProperties.swift */,
 				619FC0792C90A21A008141A1 /* PennyTracker */,
 				619FC0782C90A21A008141A1 /* Products */,
 			);
@@ -114,6 +123,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				611F32F22CF277480035D55E /* ExpenseTracking+CoreDataClass.swift in Sources */,
+				611F32F32CF277480035D55E /* ExpenseTracking+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +266,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -284,6 +296,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
